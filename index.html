@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#231911">
+  <meta name="description" content="Paintress couples executable geometry with persistent 3D Gaussian appearance memory. Explore matched returns in the Expedition-33 benchmark.">
+  <title>Eidetic Code World Model — Paintress</title>
+  <link rel="preload" as="image" href="assets/lumiere-memory.webp">
+  <link rel="preload" as="font" type="font/ttf" crossorigin href="assets/fonts/bodoni-moda.ttf">
+  <link rel="stylesheet" href="styles.css">
+  <script src="revisit.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#benchmark">Skip to research</a>
+<main>
+  <section class="hero" id="top" aria-labelledby="page-title">
+    <img class="hero-art" src="assets/lumiere-memory.webp" alt="" width="1585" height="992" fetchpriority="high">
+    <header class="masthead">
+      <a class="wordmark" href="#top">Paintress</a>
+      <nav aria-label="Sections"><a href="#method">Method</a><a href="#expedition-33">Expedition-33</a><a href="#results">Results</a></nav>
+    </header>
+    <div class="hero-copy">
+      <h1 id="page-title">Eidetic Code<br>World Model</h1>
+      <p>A persistent visual memory for generated worlds.</p>
+      <a class="watch" href="assets/paintress_explainer_en.mp4" data-video="0" data-title="Paintress explainer" data-scene="Paintress and Expedition-33 · 4:31"><span class="play-icon" aria-hidden="true"></span>Watch the explainer (4:31)</a>
+      <a class="inspect-link" href="#benchmark">Compare the frames <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="route">
+      <a href="assets/lumiere-revisit.mp4#t=7.166667" data-video="7.166667">First visit</a>
+      <span class="route-clock">
+        <input class="track" type="range" min="0" max="29.91" step="0.04" value="7.16" aria-label="Choose a time in the Lumière video" aria-describedby="seek-help">
+        <span class="clock-readout" aria-hidden="true">0:07.2</span>
+      </span>
+      <span id="seek-help" class="sr-only">Use arrow keys to choose a time, then press Enter to view that frame.</span>
+      <a href="assets/lumiere-revisit.mp4#t=29.416667" data-video="29.416667">Matched return</a>
+      <span class="scene">Lumière</span>
+    </div>
+    <small class="art-credit">Concept illustration</small>
+  </section>
+  <nav class="paper research-nav" aria-label="Research contents"><a href="#paper-film">Watch the paper film</a><a href="#overview">Overview</a><a href="#benchmark">First &amp; return</a><a href="#expedition-33">Expedition-33</a><a href="#method">Method</a><a href="#comparisons">Compare models</a><a href="#results">Results</a></nav>
+  <section class="paper section explainer" id="paper-film" aria-labelledby="paper-film-title">
+    <div class="explainer-copy">
+      <h2 id="paper-film-title">What survives the return?</h2>
+      <p>See how Paintress records the appearance of a place and how Expedition-33 compares ten systems when the camera returns.</p>
+      <p class="caption">4 min 31 sec · English narration and on-screen English captions</p>
+      <div class="film-chapters" role="group" aria-label="Play from a chapter" hidden>
+        <button type="button" data-start="0"><time datetime="PT0S">0:00</time> The Lumière revisit</button>
+        <button type="button" data-start="64"><time datetime="PT64S">1:04</time> How Paintress remembers</button>
+        <button type="button" data-start="157"><time datetime="PT157S">2:37</time> The Expedition-33 benchmark</button>
+        <button type="button" data-start="183"><time datetime="PT183S">3:03</time> Benchmark results</button>
+        <button type="button" data-start="216"><time datetime="PT216S">3:36</time> Six systems on the same route</button>
+      </div>
+    </div>
+    <div class="film-screen">
+    <video id="paper-player" controls controlslist="nodownload" playsinline preload="metadata"
+           width="1920" height="1080" poster="assets/paintress-explainer-poster.webp" aria-labelledby="paper-film-title">
+      <source src="assets/paintress_explainer_en.mp4" type="video/mp4">
+    </video>
+    </div>
+  </section>
+  <section id="overview" class="paper section" aria-labelledby="overview-title">
+    <div class="section-intro">
+      <h2 id="overview-title">A world that remembers</h2>
+      <div><p class="lead">What should the camera find when it comes back?</p><p>The first visit gives each place its appearance. Panel D follows the banner and flowerpots at the Lumière memorial as the camera returns to the same view.</p></div>
+    </div>
+    <figure class="paper-figure">
+      <a href="assets/paper-overview.webp" aria-label="Enlarge Figure 1">
+        <img src="assets/paper-overview-small.webp"
+             srcset="assets/paper-overview-small.webp 1100w, assets/paper-overview.webp 3200w"
+             sizes="(max-width: 700px) 100vw, (max-width: 1500px) 93vw, 1400px"
+             width="3200" height="1645" loading="lazy" alt="Paintress overview with the benchmark worlds, growing Gaussian map, camera route, matched returns and evaluation.">
+      </a>
+      <figcaption><span><strong>Figure 1.</strong> Paintress and Expedition-33. The paired images in panel D compare each system with its own first visit.</span><a href="assets/paper-overview.webp" aria-label="Enlarge Figure 1">Enlarge figure</a></figcaption>
+    </figure>
+  </section>
+  <section id="benchmark" class="paper section benchmark" aria-labelledby="benchmark-title">
+    <div class="section-intro">
+      <h2 id="benchmark-title">Return to Lumière</h2>
+      <p class="lead">Look for the gold “33” and the three flowerpots.</p>
+    </div>
+    <div class="inspect-layout">
+    <div class="inspect-visual">
+    <div class="pair detail-pair" id="matched-frames">
+      <figure><div class="frame-crop"><img src="assets/lumiere-first.jpg" loading="lazy" width="960" height="540" alt="First visit to the Lumière memorial, with a gold 33 plaque and three flowerpots."></div><figcaption>First visit</figcaption></figure>
+      <figure><div class="frame-crop"><img src="assets/lumiere-return.jpg" loading="lazy" width="960" height="540" alt="Return to the same memorial and flowerpots; their arrangement persists with some changes in detail."></div><figcaption>Matched return</figcaption></figure>
+      <div class="wipe-layer" hidden>
+        <span class="wipe-line" aria-hidden="true"><span class="wipe-grip"></span></span>
+        <input class="wipe-slider" type="range" min="0" max="100" step="1" value="50" aria-label="First visit visible" aria-describedby="wipe-guide">
+      </div>
+    </div>
+    <div class="wipe-actions" hidden>
+      <button type="button" data-split="100">First visit</button>
+      <span id="wipe-guide">Drag to compare</span>
+      <button type="button" data-split="0">Matched return</button>
+    </div>
+    </div>
+    <div class="inspect-settings">
+      <fieldset class="detail-controls">
+        <legend>Focus on</legend>
+        <label><input type="radio" name="detail" value="full" checked>Full frame</label>
+        <label><input type="radio" name="detail" value="plaque">The plaque</label>
+        <label><input type="radio" name="detail" value="pots">Flowerpots</label>
+      </fieldset>
+      <fieldset class="view-controls" hidden>
+        <legend>View</legend>
+        <label><input type="radio" name="compare-view" value="wipe" checked>Wipe</label>
+        <label><input type="radio" name="compare-view" value="pair">Side by side</label>
+      </fieldset>
+      <p class="inspect-note">Paintress generated both views. The camera turns away from the memorial, then returns to the same spot.</p>
+      <a class="route-link" href="assets/lumiere-revisit.mp4" data-video="0">Play the full route</a>
+    </div>
+    </div>
+  </section>
+
+  <section id="expedition-33" class="paper section" aria-labelledby="expedition-33-title">
+    <div class="section-intro">
+      <h2 id="expedition-33-title">Expedition-33</h2>
+      <div><p class="lead">Different journeys end at the same camera poses.</p><p>Across 11 scenes, five route families take the camera away from a target for 15, 30 or 60 seconds. Each return retraces the first-visit poses so details can be compared from the same angle.</p></div>
+    </div>
+    <figure class="paper-figure">
+      <a href="assets/paper-benchmark.webp" aria-label="Enlarge Figure 2">
+        <img src="assets/paper-benchmark-small.webp"
+             srcset="assets/paper-benchmark-small.webp 1100w, assets/paper-benchmark.webp 2982w"
+             sizes="(max-width: 700px) 100vw, (max-width: 1500px) 93vw, 1400px"
+             width="2982" height="1533" loading="lazy" alt="Benchmark construction from authored scene geometry and target cameras to branched routes, validation and scoring masks.">
+      </a>
+      <figcaption><span><strong>Figure 2.</strong> How a scene becomes a revisit test. Panel (d) shows the routes, and panel (e) shows the target leaving and re-entering view.</span><a href="assets/paper-benchmark.webp" aria-label="Enlarge Figure 2">Enlarge figure</a></figcaption>
+    </figure>
+  </section>
+  <section id="method" class="paper section" aria-labelledby="method-title">
+    <div class="section-intro">
+      <h2 id="method-title">How Paintress remembers</h2>
+      <div><p class="lead">Geometry fixes the layout. A separate memory stores what the camera saw.</p><p>The scene code and a persistent 3D Gaussian map share a coordinate system. Before generation, a reader refines a copy of the map against past views. Newly generated frames then update the persistent map.</p></div>
+    </div>
+    <figure class="paper-figure">
+      <a href="assets/paper-architecture.webp" aria-label="Enlarge Figure 3">
+        <img src="assets/paper-architecture-small.webp"
+             srcset="assets/paper-architecture-small.webp 1100w, assets/paper-architecture.webp 2982w"
+             sizes="(max-width: 700px) 100vw, (max-width: 1500px) 93vw, 1400px"
+             width="2982" height="978" loading="lazy" alt="Paintress architecture showing proxy and memory renderings, video generation, new views and updates to the persistent 3D memory.">
+      </a>
+      <figcaption><span><strong>Figure 3.</strong> The Paintress architecture. Follow the new frames into the memory update on the right, then the refined reader back to the next camera view.</span><a href="assets/paper-architecture.webp" aria-label="Enlarge Figure 3">Enlarge figure</a></figcaption>
+    </figure>
+  </section>
+  <section id="comparisons" class="paper section" aria-labelledby="comparisons-title">
+    <div class="section-intro">
+      <h2 id="comparisons-title">Compare the models</h2>
+      <div><p class="lead">What survives when the camera returns?</p><p>Each pair shows one model’s first view and its return to the same camera pose after the target has been out of sight for 15 seconds.</p></div>
+    </div>
+    <div class="model-toolbar">
+      <fieldset class="model-route" hidden>
+        <legend class="sr-only">Comparison scene</legend>
+        <label><input type="radio" name="model-route" value="lumiere-r2" data-last-frame="717" data-first-frame="172" data-return-frame="706" data-cue="Look for the gold “33” and the flowerpots at the foot of the memorial." checked> Lumière · R2</label>
+        <label><input type="radio" name="model-route" value="sirene-r1-15s" data-last-frame="701" data-first-frame="123" data-return-frame="690" data-cue="Compare the stonework around the open courtyard."> Sirène · R1</label>
+      </fieldset>
+      <noscript>Lumière · R2</noscript>
+      <p class="model-cue" aria-live="polite">Look for the gold “33” and the flowerpots at the foot of the memorial.</p>
+    </div>
+    <section class="route-wall" aria-labelledby="wall-title" hidden>
+      <div class="wall-heading">
+        <h3 id="wall-title">Watch the same route</h3>
+        <label>Compare
+          <select class="wall-count" aria-label="Number of models to compare">
+            <option value="2">2 models</option>
+            <option value="4" selected>4 models</option>
+            <option value="10">All 10 models</option>
+          </select>
+        </label>
+      </div>
+      <div class="wall-panes"></div>
+      <video class="wall-source" muted playsinline preload="none" hidden></video>
+      <div class="wall-controls">
+        <button type="button" class="wall-play">Play together</button>
+        <input class="wall-seek" type="range" aria-label="Shared route timeline" min="0" max="717" step="1" value="0">
+        <output class="wall-time" aria-live="off"></output>
+        <div class="wall-jumps">
+          <button type="button" data-frame="firstFrame">First visit</button>
+          <button type="button" data-frame="returnFrame">Matched return</button>
+        </div>
+      </div>
+      <p class="wall-message caption" role="status"></p>
+    </section>
+    <div class="model-grid">
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>Paintress</h3>
+            <a class="model-film" href="assets/lumiere-r2-paintress-route.mp4" data-video="0" data-title="Paintress" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play Paintress route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="paintress" aria-label="Enlarge Paintress comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-paintress-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-paintress-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>CWM</h3>
+            <a class="model-film" href="assets/lumiere-r2-cwm-route.mp4" data-video="0" data-title="CWM" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play CWM route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="cwm" aria-label="Enlarge CWM comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-cwm-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-cwm-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>Streaming CWM</h3>
+            <a class="model-film" href="assets/lumiere-r2-streaming-cwm-route.mp4" data-video="0" data-title="Streaming CWM" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play Streaming CWM route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="streaming-cwm" aria-label="Enlarge Streaming CWM comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-streaming-cwm-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-streaming-cwm-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>AgentGarten</h3>
+            <a class="model-film" href="assets/lumiere-r2-agentgarten-route.mp4" data-video="0" data-title="AgentGarten" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play AgentGarten route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="agentgarten" aria-label="Enlarge AgentGarten comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-agentgarten-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-agentgarten-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>GEN3C</h3>
+            <a class="model-film" href="assets/lumiere-r2-gen3c-route.mp4" data-video="0" data-title="GEN3C" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play GEN3C route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="gen3c" aria-label="Enlarge GEN3C comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-gen3c-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-gen3c-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>SPMem</h3>
+            <a class="model-film" href="assets/lumiere-r2-spmem-route.mp4" data-video="0" data-title="SPMem" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play SPMem route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="spmem" aria-label="Enlarge SPMem comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-spmem-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-spmem-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>Alaya-EVOKE</h3>
+            <a class="model-film" href="assets/lumiere-r2-alaya-evoke-route.mp4" data-video="0" data-title="Alaya-EVOKE" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play Alaya-EVOKE route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="alaya-evoke" aria-label="Enlarge Alaya-EVOKE comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-alaya-evoke-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-alaya-evoke-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>HY-WorldPlay</h3>
+            <a class="model-film" href="assets/lumiere-r2-hy-worldplay-route.mp4" data-video="0" data-title="HY-WorldPlay" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play HY-WorldPlay route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="hy-worldplay" aria-label="Enlarge HY-WorldPlay comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-hy-worldplay-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-hy-worldplay-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>Lyra 2.0</h3>
+            <a class="model-film" href="assets/lumiere-r2-lyra-2-0-route.mp4" data-video="0" data-title="Lyra 2.0" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play Lyra 2.0 route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="lyra-2-0" aria-label="Enlarge Lyra 2.0 comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-lyra-2-0-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-lyra-2-0-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+        <article class="model-example">
+          <div class="model-heading">
+            <h3>Matrix-Game-4</h3>
+            <a class="model-film" href="assets/lumiere-r2-matrix-game-4-route.mp4" data-video="0" data-title="Matrix-Game-4" data-scene="Lumière · R2 · 15 seconds away" aria-label="Play Matrix-Game-4 route in Lumière">Play route</a>
+          </div>
+          <button type="button" class="model-tile" data-model="matrix-game-4" aria-label="Enlarge Matrix-Game-4 comparison" aria-haspopup="dialog" disabled>
+            <span class="visit-frame"><img src="assets/lumiere-r2-matrix-game-4-first.webp" width="640" height="360" loading="lazy" alt=""><span>First visit</span></span>
+            <span class="visit-frame"><img src="assets/lumiere-r2-matrix-game-4-return.webp" width="640" height="360" loading="lazy" alt=""><span>Return · 15 s away</span></span>
+          </button>
+        </article>
+    </div>
+  </section>
+  <section id="results" class="paper section" aria-labelledby="results-title">
+    <div class="section-intro">
+      <h2 id="results-title">Results</h2>
+      <div><p class="lead">Paintress retains 52.12% of predefined details on return. AgentGarten, the strongest baseline on this measure, retains 11.52%.</p><p>Each system was tested in 165 settings. A detail counts when the system generates it on the first visit and preserves it on return.</p></div>
+    </div>
+    <nav class="result-index" aria-label="Jump to a result"><a href="#table-3">Appearance</a><a href="#table-4">Timing</a><a href="#table-5">Visual quality</a></nav>
+    <article class="result-block" id="table-3" aria-labelledby="table-3-title">
+      <h3 id="table-3-title">Table 3. Appearance consistency and detail retention</h3>
+      <p>Results are averaged across the 15, 30 and 60 second absence tiers. Detail retention counts predefined attributes both established and retained. Conditional retention counts only attributes established on the first visit. ROI-LPIPS through SSIM measure target-region appearance. R and MG refer to whole frames. A dash marks an undefined aggregate.</p>
+      <p class="caption scroll-hint" id="table-3-hint" hidden>Scroll across to see all metrics.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="table-3-title">
+        <table aria-labelledby="table-3-title">
+          <thead><tr><th scope="col">System</th><th scope="col">First-visit coverage (%) ↑</th><th scope="col">Detail retention (%) ↑</th><th scope="col">Conditional retention (%) ↑</th><th scope="col">ROI-LPIPS ↓</th><th scope="col">MAE ↓</th><th scope="col">MSE ↓</th><th scope="col">PSNR (dB) ↑</th><th scope="col">SSIM ↑</th><th scope="col">Revisit error (R) ↓</th><th scope="col">Memory gain (MG) ↑</th></tr></thead>
+          <tbody>
+            <tr class="ours"><th scope="row">Paintress</th><td>86.06</td><td>52.12</td><td>57.58</td><td>0.1220</td><td>0.0613</td><td>0.0060</td><td>24.35</td><td>0.5511</td><td>0.0739</td><td>0.1068</td></tr>
+            <tr><th scope="row">CWM</th><td>60.00</td><td>10.91</td><td>18.79</td><td>0.2731</td><td>0.1401</td><td>0.0342</td><td>15.75</td><td>0.3415</td><td>0.1644</td><td>0.0305</td></tr>
+            <tr><th scope="row">Streaming CWM</th><td>50.30</td><td>3.03</td><td>6.06</td><td>0.2777</td><td>0.1583</td><td>0.0442</td><td>14.71</td><td>0.2289</td><td>0.1465</td><td>0.0116</td></tr>
+            <tr><th scope="row">AgentGarten</th><td>67.88</td><td>11.52</td><td>16.97</td><td>0.2699</td><td>0.1420</td><td>0.0492</td><td>15.96</td><td>0.3971</td><td>0.1536</td><td>0.0302</td></tr>
+            <tr><th scope="row">GEN3C</th><td>10.30</td><td>0.00</td><td>0.00</td><td>0.3543</td><td>0.1954</td><td>0.0649</td><td>12.97</td><td>0.4075</td><td>0.1932</td><td>−0.0014</td></tr>
+            <tr><th scope="row">SPMem</th><td>10.91</td><td>0.00</td><td>—</td><td>0.4374</td><td>0.2439</td><td>0.0970</td><td>11.22</td><td>0.3140</td><td>0.1931</td><td>—</td></tr>
+            <tr><th scope="row">Alaya-EVOKE</th><td>39.39</td><td>0.24</td><td>0.67</td><td>0.3266</td><td>0.1846</td><td>0.0639</td><td>13.10</td><td>0.3106</td><td>0.1749</td><td>0.0120</td></tr>
+            <tr><th scope="row">HY-WorldPlay</th><td>0.00</td><td>0.00</td><td>—</td><td>0.1810</td><td>0.1474</td><td>0.0462</td><td>18.55</td><td>0.3195</td><td>0.1272</td><td>0.0342</td></tr>
+            <tr><th scope="row">Lyra 2.0</th><td>43.64</td><td>7.88</td><td>26.06</td><td>0.2673</td><td>0.1710</td><td>0.0548</td><td>13.62</td><td>0.2433</td><td>0.1596</td><td>0.0342</td></tr>
+            <tr><th scope="row">Matrix-Game-4</th><td>18.79</td><td>0.61</td><td>3.64</td><td>0.3244</td><td>0.1500</td><td>0.0457</td><td>15.12</td><td>0.4541</td><td>0.1560</td><td>0.0234</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+    <figure class="paper-figure">
+      <a href="assets/paper-returns.webp" aria-label="Enlarge Figure 4">
+        <img src="assets/paper-returns-small.webp"
+             srcset="assets/paper-returns-small.webp 1100w, assets/paper-returns.webp 2982w"
+             sizes="(max-width: 700px) 100vw, (max-width: 1500px) 93vw, 1400px"
+             width="2982" height="1023" loading="lazy" alt="Three plots show perceptual discrepancy, conditional detail retention and target existence across the three absence durations.">
+      </a>
+      <figcaption><span><strong>Figure 4.</strong> After 60 seconds out of view, the target in Paintress is closer in appearance to its first visit than in AgentGarten, Lyra 2.0 or CWM after 15 seconds. Paintress scores 0.1630 on ROI-LPIPS at 60 seconds. The three baselines score 0.2579 to 0.2629 at 15 seconds. Lower values indicate a closer match.</span><a href="assets/paper-returns.webp" aria-label="Enlarge Figure 4">Enlarge figure</a></figcaption>
+    </figure>
+    <article class="result-block" id="table-4" aria-labelledby="table-4-title">
+      <h3 id="table-4-title">Table 4. Target-visibility timing</h3>
+      <p>Estimable is the share of videos for which the absence interval could be bounded. Brackets give the lower and upper measurement bounds. Negative signed bias means the measured absence was shorter than scheduled. A dash marks an undefined aggregate.</p>
+      <p class="caption scroll-hint" id="table-4-hint" hidden>Scroll across to see all metrics.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="table-4-title">
+        <table aria-labelledby="table-4-title">
+          <thead><tr><th scope="col">System</th><th scope="col">Estimable (%) ↑</th><th scope="col">Departure error (s) ↓</th><th scope="col">Reappearance error (s) ↓</th><th scope="col">Boundary error (s) ↓</th><th scope="col">Duration error (s) ↓</th><th scope="col">Relative duration error ↓</th><th scope="col">Signed duration bias (s)</th></tr></thead>
+          <tbody>
+            <tr class="ours"><th scope="row">Paintress</th><td>100.00</td><td>[0.25, 0.97]</td><td>[1.83, 5.22]</td><td>[1.04, 3.09]</td><td>[1.69, 5.75]</td><td>[5.45%, 18.18%]</td><td>[−1.93, +2.34]</td></tr>
+            <tr><th scope="row">CWM</th><td>44.85</td><td>[0.62, 1.25]</td><td>[8.42, 11.45]</td><td>[4.56, 6.33]</td><td>[7.85, 11.39]</td><td>[17.58%, 29.70%]</td><td>[−6.17, −2.44]</td></tr>
+            <tr><th scope="row">Streaming CWM</th><td>32.73</td><td>[1.05, 1.95]</td><td>[7.27, 9.73]</td><td>[4.06, 5.60]</td><td>[6.87, 9.90]</td><td>[20.61%, 32.12%]</td><td>[−1.65, +1.94]</td></tr>
+            <tr><th scope="row">AgentGarten</th><td>68.48</td><td>[0.36, 0.83]</td><td>[3.39, 7.04]</td><td>[1.87, 3.92]</td><td>[3.18, 7.11]</td><td>[10.30%, 24.24%]</td><td>[−0.07, +4.41]</td></tr>
+            <tr><th scope="row">GEN3C</th><td>0.00</td><td>[2.63, 3.47]</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><th scope="row">SPMem</th><td>0.00</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><th scope="row">Alaya-EVOKE</th><td>1.21</td><td>[0.96, 1.89]</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><th scope="row">HY-WorldPlay</th><td>0.00</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><th scope="row">Lyra 2.0</th><td>26.06</td><td>[3.55, 4.73]</td><td>[3.28, 28.82]</td><td>[2.86, 16.17]</td><td>[4.03, 30.73]</td><td>[12.12%, 87.88%]</td><td>[−30.73, −0.64]</td></tr>
+            <tr><th scope="row">Matrix-Game-4</th><td>5.45</td><td>[1.81, 2.54]</td><td>[5.75, 6.80]</td><td>[2.93, 3.64]</td><td>[5.56, 7.00]</td><td>[19.39%, 25.45%]</td><td>[+5.56, +7.00]</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+    <article class="result-block" id="table-5" aria-labelledby="table-5-title">
+      <h3 id="table-5-title">Table 5. Visual quality on return</h3>
+      <p>Each column reports a percentage. Alaya-EVOKE produces sharp frames in 82.42% of cases, but the intended target appears in only 1.21%.</p>
+      <p class="caption scroll-hint" id="table-5-hint" hidden>Scroll across to see all metrics.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="table-5-title">
+        <table aria-labelledby="table-5-title">
+          <thead><tr><th scope="col">System</th><th scope="col">Target exists ↑</th><th scope="col">Attributes readable ↑</th><th scope="col">Sharp ↑</th><th scope="col">Artifact-free ↑</th><th scope="col">Plausible structure ↑</th></tr></thead>
+          <tbody>
+            <tr class="ours"><th scope="row">Paintress</th><td>100.00</td><td>79.39</td><td>81.82</td><td>78.79</td><td>100.00</td></tr>
+            <tr><th scope="row">CWM</th><td>47.88</td><td>23.64</td><td>30.91</td><td>41.21</td><td>28.48</td></tr>
+            <tr><th scope="row">Streaming CWM</th><td>32.73</td><td>25.45</td><td>47.27</td><td>18.79</td><td>13.33</td></tr>
+            <tr><th scope="row">AgentGarten</th><td>72.73</td><td>52.73</td><td>67.88</td><td>59.39</td><td>57.58</td></tr>
+            <tr><th scope="row">GEN3C</th><td>1.21</td><td>0.61</td><td>0.00</td><td>0.00</td><td>0.00</td></tr>
+            <tr><th scope="row">SPMem</th><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td></tr>
+            <tr><th scope="row">Alaya-EVOKE</th><td>1.21</td><td>1.82</td><td>82.42</td><td>80.00</td><td>13.33</td></tr>
+            <tr><th scope="row">HY-WorldPlay</th><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td></tr>
+            <tr><th scope="row">Lyra 2.0</th><td>24.85</td><td>24.24</td><td>61.21</td><td>51.52</td><td>26.06</td></tr>
+            <tr><th scope="row">Matrix-Game-4</th><td>6.67</td><td>7.88</td><td>45.45</td><td>24.24</td><td>5.45</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+</main>
+<footer class="paper"><span>Eidetic Code World Model</span><a href="#top">Back to top ↑</a></footer>
+<dialog id="viewer" aria-labelledby="film-title">
+  <div class="film-head"><h2 id="film-title">Lumière revisit</h2><form method="dialog"><button type="submit" autofocus>Close</button></form></div>
+  <video controls controlslist="nodownload" playsinline preload="none" aria-label="Paintress returns to the Lumière memorial"></video>
+  <div class="film-jumps" role="group" aria-label="Compare matched frames"><button type="button" data-jump="0">First visit</button><button type="button" data-jump="1">Matched return</button><output aria-live="polite"></output></div>
+  <div class="film-foot"><span>Lumière · Paintress</span></div>
+</dialog>
+<dialog id="model-viewer" aria-labelledby="model-title" aria-describedby="model-scene">
+  <div class="film-head"><h2 id="model-title"></h2><form method="dialog"><button>Close</button></form></div>
+  <p id="model-scene"></p>
+  <div class="model-pair">
+    <figure><figcaption>First visit</figcaption><img src="assets/lumiere-r2-paintress-first.webp" loading="lazy" width="640" height="360" alt=""></figure>
+    <figure><figcaption>Matched return</figcaption><img src="assets/lumiere-r2-paintress-return.webp" loading="lazy" width="640" height="360" alt=""></figure>
+  </div>
+</dialog>
+</body>
+</html>
